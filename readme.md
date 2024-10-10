@@ -44,6 +44,7 @@ npm install --save-dev dotenv
 npm install --save-dev @chainlink/env-enc
 对关键信息进行加密
 
+npx env-enc set
 
 verify
 npx hardhat verify --network sepolia 0xa5808eA06f5CA32d5b6C3f9Ee4f1eb0107e77f5d "300"
