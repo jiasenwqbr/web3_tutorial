@@ -1,21 +1,32 @@
 const {ethers} = require("hardhat")
 const { assert, expect } = require("chai")
+const helpers = require("@nomicfoundation/hardhat-network-helpers")
+const {devlopmentChains} = require("../helper-hardhat-config")
+!devlopmentChains ? describe.skip : 
 describe("test fundme contract",async function(){
-    let fristAccount
     let fundMe
+    let fundMeSecondAccount
+    let firstAccount
+    let secondAccount
+    let mockV3Aggregator
     beforeEach(async function(){
-        fristAccount = (await ethers.getSigners())[0];
-        const fundMeFactory = await ethers.getContractFactory("FundMe")
-        fundMe = await fundMeFactory.deploy(180)
+        await deployments.fixture(["all"])
+        firstAccount = (await getNamedAccounts()).firstAccount
+        secondAccount = (await getNamedAccounts()).secondAccount
+        const fundMeDeployment = await deployments.get("FundMe")
+        mockV3Aggregator = await deployments.get("MockV3Aggregator")
+        fundMe = await ethers.getContractAt("FundMe", fundMeDeployment.address)
+        fundMeSecondAccount = await ethers.getContract("FundMe", secondAccount)
     })
-    it("test if owner is msg.sender",async function(){
+
+    it("test if the owner is msg.sender", async function() {
         await fundMe.waitForDeployment()
-        assert(fristAccount,(await fundMe.owner()))
+        assert.equal((await fundMe.owner()), firstAccount)
     })
-    it ("test if the datafeed is assigned correctly",async function(){
+
+    it("test if the datafeed is assigned correctly", async function() {
         await fundMe.waitForDeployment()
-        //const dataFeed = await fundMe.dataFeed()
-       // console.log(`the datafeed is ${dataFeed}`)
-        assert.equal((await fundMe.dataFeed()), "0x694AA1769357215DE4FAC081bf1f309aDC325306")
+        assert.equal((await fundMe.dataFeed()), mockV3Aggregator.address)
     })
+    
 })

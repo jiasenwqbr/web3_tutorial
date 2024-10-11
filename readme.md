@@ -125,3 +125,17 @@ npx hardhat interact-fundme --addr 0xa5808eA06f5CA32d5b6C3f9Ee4f1eb0107e77f5d --
 
 
 npm install -D hardhat-deploy
+
+
+npx hardhat deploy --network sepolia
+```bash
+Compiled 1 Solidity file successfully (evm target: paris).
+environment is not local, mock contract depployment is skipped
+deploying "FundMe" (tx: 0xecdbe009e04f95fc2aaf46464205384f26923a8eb1678a6efcdce5d3f284d36c)...: deployed at 0x3753f65cF12B8DF008d6e6278d3bA1F1dAeEede0 with 1274740 gas
+Successfully submitted source code for contract
+contracts/FundMe.sol:FundMe at 0x3753f65cF12B8DF008d6e6278d3bA1F1dAeEede0
+for verification on the block explorer. Waiting for verification result...
+
+Successfully verified contract FundMe on the block explorer.
+https://sepolia.etherscan.io/address/0x3753f65cF12B8DF008d6e6278d3bA1F1dAeEede0#code
+```
