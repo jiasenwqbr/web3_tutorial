@@ -22,5 +22,16 @@ module.exports = {
     apiKey: {
       sepolia: ETHERSCAN_API_KEY
     }
+  },
+  namedAccounts: {
+    firstAccount: {
+      default: 0
+    },
+    secondAccount: {
+      default: 1
+    },
+  },
+  gasReporter: {
+    enabled: true
   }
 };

@@ -124,3 +124,4 @@ npx hardhat interact-fundme --addr 0xa5808eA06f5CA32d5b6C3f9Ee4f1eb0107e77f5d --
 
 
 
+npm install -D hardhat-deploy
