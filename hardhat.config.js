@@ -1,8 +1,10 @@
 require("@nomicfoundation/hardhat-toolbox");
 require("dotenv").config();
 require("./tasks");
+require("hardhat-deploy")
+require("@nomicfoundation/hardhat-ethers");
 require("hardhat-deploy");
-
+require("hardhat-deploy-ethers");
 /** @type import('hardhat/config').HardhatUserConfig */
 
 const SEPOLIA_RPC_URL = process.env.SEPOLIA_RPC_URL

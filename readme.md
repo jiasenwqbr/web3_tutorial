@@ -139,3 +139,16 @@ for verification on the block explorer. Waiting for verification result...
 Successfully verified contract FundMe on the block explorer.
 https://sepolia.etherscan.io/address/0x3753f65cF12B8DF008d6e6278d3bA1F1dAeEede0#code
 ```
+
+hardhat-deploy-ethers require the installation of hardhat-deploy and @nomicfoundation/hardhat-ethers
+
+Note that you cannot use @nomicfoundation/hardhat-toolbox for installing @nomicfoundation/hardhat-ethers as this interfere with the typing extensions provided by hardhat-deploy-ethers
+```bash
+npm install --save-dev @nomicfoundation/hardhat-ethers ethers hardhat-deploy hardhat-deploy-ethers
+````
+Which means you then add the following statement to your hardhat.config.js:
+```bash
+require("@nomicfoundation/hardhat-ethers");
+require("hardhat-deploy");
+require("hardhat-deploy-ethers");
+```
